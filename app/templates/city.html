@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{#{% extends "bootstrap/base.html" %}#}
+
+{% block head %}
+    {% block title %}
+        <title>{{ city }}--招聘信息</title>
+    {% endblock %}
+    {{ super() }}
+    <script type="text/javascript" src={{url_for('static', filename='js/city.js')}}></script>
+{% endblock %}
+{% block content %}
+    <div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="wowo">
+        {{ message }}
+    </div>
+    {% endfor %}
+    </div>
+
+    {% block page_content %}{% endblock %}
+
+        <div id="container"  style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+{#        <div class="note">123</div>#}
+        <div id="container4" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+        <div id="container2" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+        <div id="container3" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+    {#变量代码块的使用#}
+    <script>
+        {#字符串过滤器，safe表示禁止转义#}
+        huizong({{ cityname|safe }},{{ data|safe }});
+        nth({{ cityname|safe }},{{ JC_count|safe }},{{ JC_jobname|safe }});
+        salary_pie({{ sal_data|safe }},{{ cityname|safe }});
+        e_huan({{ jobsize|safe }},{{ cityname|safe }})
+    </script>
+{% endblock %}

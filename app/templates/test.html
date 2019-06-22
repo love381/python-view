@@ -1,0 +1,17 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>echarts</title>
+<!--<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.5.2/echarts.js"></script>
+    <script type="text/javascript" src="http://gallery.echartsjs.com/dep/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src={{ url_for('static',filename='js/test.js') }}></script>
+</head>
+<body>
+
+<div id="main" style="height: 700px; min-width: 800px; max-width: 900px; margin: 0 auto"></div>
+<script language="JavaScript">
+    mapLoad({{ data|safe }},{{ geoCoordMap|safe }});
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+*{
+    margin: 0;  /* 表示页面比较紧凑不留空白*/
+    padding: 0;
+}
+table{
+    width: 100%;
+    background-color:#6C6C6C;
+    margin: 0 auto;  /*上下边界为0，左右则根据宽度自适应相同值（即居中）*/
+    box-sizing: border-box; /*盒模型中的IE模型*/
+    color: white;
+}
+tr{
+    height: 40px;       /*height属性设置元素的高度*/
+    line-height: 40px; /*设置行高的像素*/
+    text-align: center;/*指定元素文本的水平对齐方式*/
+}
+tr:nth-child(2n){  /*伪类选择器将第2n即偶数tr属性设置为下面的背景样式*/
+    background-color: #3C3C3C;
+}
+th:nth-child(1){
+    width: 45%;
+}
+th:nth-child(2){
+    width: 10%;
+}
+th:nth-child(3){
+    width: 25%;
+}
+th:nth-child(4){
+    width: 10%;
+}
+th:nth-child(5){
+    width: 10%;
+}
+a{
+    color: #2fa8ec;
+}
+tr:hover{    /*表格隔行变色(高亮显示)悬停变色*/
+    color: #2fa8ec;
+}

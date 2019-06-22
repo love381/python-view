@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block head %}
+    {% block title %}
+        <title>工资区间{{ type }}的行业详情--</title>
+    {% endblock %}
+    {{ super() }}
+    <script type="text/javascript" src={{url_for('static', filename='js/salary_jobtype.js')}}></script>
+{% endblock %}
+{% block content %}
+        <div id="container" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+
+{#        <div id="container1" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>#}
+        <div id="container2" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+    <script>
+        e_spline({{ city_name|safe }},{{ jobcount|safe }},{{ jobtype|safe }},{{ typename|safe }},{{ sum|safe }});
+{#        didian({{ didian_name|safe }},{{ didian_count|safe }},{{ typename|safe }});#}
+        e_huan({{ city_name|safe }},{{ banhuan|safe }},{{ typename|safe }})
+    </script>
+{% endblock %}

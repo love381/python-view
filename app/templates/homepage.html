@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block head %}
+    {% block title %}
+        <title>主页</title>
+    {% endblock %}
+    {{ super() }}
+    <link rel="stylesheet" href={{ url_for('static',filename='css/reset.css') }}>
+    <link rel="stylesheet" href={{ url_for('static',filename='css/style.css') }}>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.5.2/echarts.js"></script>
+    <script type="text/javascript" src="http://gallery.echartsjs.com/dep/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src={{url_for('static', filename='js/homepage.js')}}></script>
+{% endblock %}
+{% block content %}
+    <div id="map_china_wrap" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+    <div id="slider">
+        <ul class="slides clearfix">
+            <li><div class="responsive">
+                <div id="container" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+            </div></li>
+            <li>
+               <div class="responsive">
+                    <div id="container1" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+                </div>
+            </li>
+            <li>
+               <div class="responsive">
+                    <div id="container2" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+                </div>
+            </li>
+        </ul>
+        <ul class="controls"> {# 主页下面的轮播图类使用easySlider.js文件 #}
+            <li><img src={{ url_for('static',filename='image/prev.png') }} alt="previous"></li>
+            <li><img src={{ url_for('static',filename='image/next.png') }} alt="next"></li>
+        </ul>
+        <ul class="pagination">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script type="text/javascript" src={{url_for('static', filename='js/easySlider.js')}}></script>
+    <script type="text/javascript">
+     mapLoad({{ data|safe }}, {{ geoCoordMap|safe }});
+     zhuxing({{ data1|safe }},{{ city|safe }});
+     sal({{ sal_x|safe }},{{ sal_y|safe }});
+     alljob({{ getpie1|safe }});
+        $(function() {
+            $("#slider").easySlider( {
+                slideSpeed: 500,
+                paginationSpacing: "15px",
+                paginationDiameter: "12px",
+                paginationPositionFromBottom: "20px",
+                slidesClass: ".slides",
+                controlsClass: ".controls",
+                paginationClass: ".pagination"
+            });
+        });
+    </script>
+{% endblock %}

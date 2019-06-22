@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block head %}
+    {% block title %}
+        <title>Software_language</title>
+    {% endblock %}
+    {{ super() }}
+    <script type="text/javascript" src={{url_for('static', filename='js/soft_language.js')}}></script>
+{% endblock %}
+{% block content %}
+        <div id="container" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+        <div id="container2" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+        <div id="container1" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+    <script>
+        avgsalary_and_job({{ city|safe }},{{ a_vg|safe }},{{ counts|safe }});
+        language({{ language_name|safe }},{{ value|safe }});
+    </script>
+    <script>
+
+{#        xiazuan({{ di|safe }},{{ ss|safe }})#}
+{#        xiazuan({{ perll|safe }},{{ c_sharp_result1|safe }},{{ javascript_result1|safe }},{{ c_plus_plus1|safe }},{{ di|safe }},{{ java_result1|safe }})#}
+        //图表初始化函数
+        var di ={{ di|safe }}
+        var java_result1 ={{ java_result1|safe }}
+        var c_plus_plus1 ={{ c_plus_plus1|safe }}
+        var c_result = {{ c_result|safe }}
+        var c_sharp_result1 = {{ c_sharp_result1|safe }}
+        var perll = {{ perll|safe }}
+        var php_result = {{ php_result|safe }}
+        var javascript_result1 = {{ javascript_result1|safe }}
+        var r_result = {{ r_result|safe }}
+        var html_result = {{ html_result|safe }}
+        var python_result = {{ python_result|safe }}
+        var objective_c_result = {{ objective_c_result|safe }}
+        var go_result = {{ go_result|safe }}
+        var ruby_result = {{ ruby_result|safe }}
+        var swift_result = {{ swift_result|safe }}
+        var visual_basic_result = {{ visual_basic_result|safe }}
+        var chart = new Highcharts.Chart('container2', {    //下钻图的js写在了html中使用highcharts定制图
+                chart: {
+                    type: 'column',                         //指定图表的类型，默认是折线图（line）
+                    backgroundColor: null
+                },
+                title: {
+                    text: "最具人气最热门的15大编程语言"    //标题
+                },
+                subtitle:{
+                    text: "点击可查看该语言在全国城市需求分布" //副标题
+                },
+                plotOptions: {
+                    series: {
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y}'
+                        }
+                    }
+                },
+                credits : {
+                  enabled: false
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:f}个</b> <br/>'
+                },
+                xAxis: {               //x轴分类
+                    type: 'category',
+                    crosshair: true,
+                    lineWidth: 1,
+                    lineColor: "#f0f3e3",
+                    tickWidth: 0,
+                    labels: {
+                        y: 20, //x轴刻度往下移动20px
+                        style: {
+                            color: '#ba5114',//颜色
+                            fontSize:'14px'  //字体
+                        }
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: '职位数'               //指定y轴的标题
+                    }
+                },
+                series: [{                              //指定数据列
+                    name: '编程语言',
+                    colorByPoint: true,
+                    data: di
+                }],
+            drilldown : {         //使用highcharts的钻取（drilldown）
+                series: [{
+                    name: 'java',
+                    id: 'java',
+                    data: java_result1
+            }, {
+                name: 'c++',
+                id: 'c++',
+                data: c_plus_plus1
+            },{
+                name: 'c',
+                id: 'c',
+                data: c_result
+            },{
+                name: 'perl',
+                id: 'perl',
+                data: perll
+            },{
+                name: 'javascript',
+                id: 'javascript',
+                data: javascript_result1
+            },{
+                    name: 'php',
+                    id: 'php',
+                    data: php_result
+            },{
+                    name: 'c#',
+                    id: 'c#',
+                    data: c_sharp_result1
+            },{
+                    name: 'r',
+                    id: 'r',
+                    data: r_result
+            },{
+                    name: 'html',
+                    id: 'html',
+                    data: html_result
+            },{
+                    name: 'python',
+                    id: 'python',
+                    data: python_result
+            },{
+                    name: 'objective c',
+                    id: 'objective c',
+                    data: objective_c_result
+            },{
+                    name: 'go',
+                    id: 'go',
+                    data: go_result
+            },{
+                    name: 'ruby',
+                    id: 'ruby',
+                    data: ruby_result
+            },{
+                    name: 'swift',
+                    id: 'swift',
+                    data: swift_result
+            },{
+                    name: 'visual basic',
+                    id: 'visual basic',
+                    data: visual_basic_result
+            }]
+        }
+        });
+    </script>
+{% endblock %}

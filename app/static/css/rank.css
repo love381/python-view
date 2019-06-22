@@ -1,0 +1,47 @@
+.bigbox{
+    width:1200px;
+    height:460px;
+    margin:100px auto;
+    transition: transform 2s;
+}
+.sbox{
+    width: 300px;
+    height: 460px;
+    background-image: url("/app/static/image/123.jpg");
+    border: 3px solid #3C3C3C;
+    border-radius: 30px 30px 30px 30px;
+    box-sizing: border-box;
+    float: left;
+}
+.sbox:hover{
+    transform: scale(1.25);
+}
+.bigbox .sbox .inbox{
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+.data{
+    width: 300px;
+    height: 40px;
+     margin-left: 5px;
+}
+.data .work{
+     width: 200px;
+    height: 40px;
+   float: left;
+}
+.data .count{
+     width: 100px;
+    height: 40px;
+   float: left;
+    //color: #2fa8ec;
+ color: #3a9e35;
+}
+a{
+    color: #3a9e35;
+}
+a:hover{
+    color: #98510f;
+}

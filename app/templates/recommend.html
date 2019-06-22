@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block head %}
+    {% block title %}
+        <title>职位搜索</title>
+    {% endblock %}
+    {{ super() }}
+    <script type="text/javascript" src={{ url_for('static',filename='js/recommend.js') }}></script>
+    <link rel="stylesheet" type="text/css" href={{url_for('static', filename='css/recommend.css')}}>
+{% endblock %}
+{% block content %}
+    <div>
+        <FORM METHOD=POST ACTION="" name="form1" > {#form标签用于创建表单 method规定用于发送form-data的HTTP方法。name规定表单名称 #}
+            <tr class="box">
+                <td class="word">请选择行业：</td>
+                <td class="one">
+                    <SELECT  NAME="type" id="type" onchange="getCity()"> {# onchange事件会在域的值改变时发生 #}
+                        <OPTION VALUE="empty">请选择行业 </OPTION> {# 定义送往服务器的选项值 #}
+                        {% for data in result %}{# jinja2模板for语言用法 #}
+                            <option value={{ data }}>{{ data }}</option>
+                        {% endfor %}
+                    </SELECT>
+                </td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>  {# 字符转义 #}
+                <td class="word">请选择职位：</td>
+                <td class="two">
+                    <select  NAME="one" id="one">
+                        <OPTION VALUE="empty">请选择职位 </OPTION>
+                    </select>
+                </td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td >
+                    <input class="search" id="keyword" name="search" required="" placeholder="Search" x-webkit-speech="" x-webkit-grammar="builtin:search" value="请输入关键字" onfocus="empty()" lang="zh-CN">
+                    &nbsp;&nbsp;
+{#                    <input class="img" type="image" src={{ url_for('static',filename='image/go.jpg') }} onclick="getData()" />#}
+                    <input class="btn btn-info" type="button" id="submit" name="submit" value="搜索" onclick="getData()"/>
+                </td>
+            </tr>
+        </FORM>
+    </div>
+    <table id="detail" border="0" cellspacing="" cellpadding="">
+			<tr>
+				<th>
+					职位名称
+				</th>
+				<th>
+					职位月薪
+				</th>
+				<th>
+					工作地点
+				</th>
+				<th>
+					公司规模
+				</th>
+				<th>
+					查看详情
+				</th>
+			</tr>
+        {% for one in data %}
+            <tr>
+                <td>{{ one[0] }}</td>
+                <td>{{ one[1] }}</td>
+                <td>{{ one[2] }}</td>
+                <td>{{ one[3] }}</td>
+                <td><a href={{ one[4] }} target="_blank">查看详情</a></td>  {#target='_blank'再新窗口打开链接#}
+            </tr>
+        {% endfor %}
+    </table>
+    <div id="empty" class="note" style="display: none"></div>
+<script language="JavaScript" type="text/javascript">
+     getCity();
+    </script>
+{% endblock %}

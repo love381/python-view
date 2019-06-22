@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block head %}
+    {% block title %}
+        <title>ranking list</title>
+    {% endblock %}
+    {{ super() }}
+    <script type="text/javascript" src={{url_for('static', filename='js/rank.js')}}></script>
+    <link rel="stylesheet" type="text/css" href={{url_for('static', filename='css/rank.css')}}>
+{% endblock %}
+{% block content %}
+    <div class="bigbox">
+			<div class="sbox" onmouseover="show()" onmouseout="hide()">
+				<div class="inbox">
+					<h2>竞争最激烈的岗位</h2>
+				</div>
+                <div class="data">
+                    {% for one in data %}
+                        <div class="work"><a href={{ one[2] }} target="_blank">{{ one[0] }}</a></div>
+                        <div class="count">{{ one[1] }}</div>
+                    {% endfor %}
+			    </div>
+            </div>
+			<div class="sbox">
+				<div class="inbox">
+					<h2>招聘需求增长最快的岗位</h2>
+				</div>
+                <div class="data">
+                    {% for one in data1 %}
+                        <div class="work"><a href={{ one[2] }} target="_blank">{{ one[0] }}</a></div>
+                        <div class="count">{{ one[1] }}</div>
+                    {% endfor %}
+			    </div>
+			</div>
+			<div class="sbox">
+				<div class="inbox">
+					<h2>大家最关注的岗位</h2>
+				</div>
+                <div class="data">
+                    {% for one in data2 %}
+                        <div class="work"><a href={{ one[2] }} target="_blank">{{ one[0] }}</a></div>
+                        <div class="count">{{ one[1] }}</div>
+                    {% endfor %}
+			    </div>
+			</div>
+			<div class="sbox">
+				<div class="inbox">
+					<h2>最冷门的岗位</h2>
+				</div>
+                <div class="data">
+                    {% for one in data3 %}
+                        <div class="work"><a href={{ one[2] }} target="_blank">{{ one[0] }}</a></div>
+                        <div class="count">{{ one[1] }}</div>
+                    {% endfor %}
+			    </div>
+			</div>
+		</div>
+{% endblock %}

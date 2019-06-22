@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	{% block head %}
+        <meta charset="UTF-8"/>
+{#        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />#}
+		{% block title %}{% endblock %}
+        <link rel="shortcut icon" href={{url_for('static', filename='icon.ico')}}>
+        <link rel="stylesheet" href={{ url_for('static',filename='css/pgwmenu.css') }}>
+
+     {# highcharts 支持将图片下载成各种格式 前端表下载插件#}
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>  {# 图片导出 #}
+        <script src="http://cdn.hcharts.cn/highcharts/themes/skies.js"></script>
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://img.hcharts.cn/highcharts/modules/drilldown.js"></script>  {# 下钻 #}
+
+        <script src="https://img.hcharts.cn/highcharts/modules/data.js"></script>
+        <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+        <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+
+
+{#        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">#}
+{#        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+
+        <script type="text/javascript" src={{ url_for('static',filename='js/pgwmenu.min.js') }}></script>
+		<link rel="stylesheet" type="text/css" href={{url_for('static', filename='css/base.css')}}>
+		{% endblock %}
+	</head>
+	<body>
+		<div class="nav">
+		    <div class="nav_con">
+			<ul class="pgwMenu">
+				<li><a href="/">首页</a></li>
+				<li><a href="/software/language">软件方向</a></li>
+				<li><a href="/recommend">职位搜索</a></li>
+				<li><a href="/rank">排行榜</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class="content">
+			{% block content %}
+            {% endblock %}
+		</div>
+		<div class="foot">
+            <p>本项目所有数据均来自智联招聘、前程无忧招聘网站公开招聘信息，数据来源日期为：2019.04.15</p>
+            <p>所有数据仅为本项目分析使用，不作为商业用途，另请注意招聘数据时效性</p>
+            <p>感谢以下开源项目:<a class="acolor" href="https://scrapy.org/" target="_blank">Scrapy</a>|<a class="acolor" href="http://flask.pocoo.org/" target="_blank">Flask</a>|<a class="acolor" href="https://www.hcharts.cn/" target="_blank">Highcharts</a>|<a class="acolor" href="http://echarts.baidu.com/index.html" target="_blank">Echarts</a></p>
+            <p>联系邮箱:919485656@qq.com|联系QQ:919485656</p>
+		</div>
+		<div class="footer">
+			<a href="#">Top</a>
+		</div>
+    <script>
+        {# jQuery响应菜单插件 #}
+             $(function() {
+		$('.pgwMenu').pgwMenu({
+			dropDownLabel: '菜单',
+			viewMoreLabel: '更多<span class="icon"></span>'
+		});
+		$('.pgwMenuCustom').pgwMenu({
+			mainClassName: 'pgwMenuCustom',
+			dropDownLabel: '菜单',
+			viewMoreLabel: '更多<span class="icon"></span>'
+		});
+	});
+    </script>
+	</body>
+</html>

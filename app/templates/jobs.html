@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block head %}
+    {% block title %}
+        <title>{{ type }}--行业信息</title>
+    {% endblock %}
+    {{ super() }}
+    <script type="text/javascript" src={{url_for('static', filename='js/jobs.js')}}></script>
+{% endblock %}
+{% block content %}
+        <div id="container3" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+        <div id="container4" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+        <div id="container" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+        <div id="container2" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+    <script>
+        fun_city({{ city_pie|safe }},{{ location_name|safe }},{{ typename|safe }})
+        fun_guimo({{ companysize|safe }},{{ location_name|safe }},{{ typename|safe }})
+        zhuxing({{ data|safe }},{{ city|safe }},{{ typename|safe }});
+        banhuan({{ result|safe }},{{ typename|safe }})
+    </script>
+{% endblock %}
